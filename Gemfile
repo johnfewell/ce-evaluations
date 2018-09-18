@@ -3,6 +3,31 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
 
+gem 'activeadmin'
+gem 'active_model_serializers'
+
+gem 'lodash-rails'
+
+gem 'rating'
+
+gem "cocoon"
+
+gem 'omniauth-facebook'
+
+gem 'devise'
+
+gem 'faker', '~> 1.8', '>= 1.8.4'
+
+gem 'octicons_helper'
+
+gem 'pdfkit'
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+
+gem 'render_anywhere', :require => false
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
