@@ -1,0 +1,38 @@
+<%= form_for @attendee, builder: PrimerFormBuilder do |f| %>
+  <% if @attendee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @attendee.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <dl class="form-group">
+    <dt><%= f.label :first_name %><br></dt>
+    <dd><%= f.text_field :first_name %><br></dd>
+    <dt><%= f.label :last_name %><br></dt>
+    <dd><%= f.text_field :last_name %><br></dd>
+    <dt><%= f.label :title %><br></dt>
+    <dd><%= f.text_field :title %><br></dd>
+    <dt><%= f.label :suffix %><br></dt>
+    <dd><%= f.text_field :suffix %><br></dd>
+</dl>
+
+  <% if is_superadmin? %>
+    <h4>All Courses</h4>
+      <div class="field mx-5">
+        <%= f.collection_check_boxes(:course_ids, Course.all, :id, :title) do |b| %>
+          <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %><br/>
+        <% end %>
+      </div>
+  <% end %>
+
+</br>
+  <div class="actions">
+    <%= f.submit 'Update Profile', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

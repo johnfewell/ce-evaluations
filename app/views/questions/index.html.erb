@@ -1,0 +1,15 @@
+<%= link_to "New Question", new_question_path, id: "news", class: "btn btn-primary" %>
+
+<table class="data-table">
+  <tr>
+    <th>Content</th>
+  </tr>
+
+<% questions_by_instructor.each do |q| %>
+  <tr>
+    <td>
+      <%= link_to q.content, edit_question_path(q)%>
+    </td>
+  </tr>
+  <% end %>
+</table>

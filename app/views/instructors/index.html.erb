@@ -1,0 +1,24 @@
+<% if is_superadmin? %>
+  <%= link_to "New Instructor", new_instructor_path, class: "btn btn-primary" %>
+<% end %>
+  <div class="columns">
+    <% @instructors.each_slice(10) do |instructors| %>
+        <div class="one-fifth column">
+          <table class="data-table">
+            <tr>
+              <th>Name</th>
+            </tr>
+              <% instructors.each do |i| %>
+                <tr>
+                  <td>
+                      <%= link_to i.fullname, instructor_path(i) %>
+                  </td>
+                </tr>
+              <% end %>
+        </table>
+      </div>
+    <% end %>
+  </div>
+
+<br />
+<br />

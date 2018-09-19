@@ -1,0 +1,74 @@
+<%= render 'evaluations_subnav' %>
+
+ <ul>
+    <div id="evaluations-main" data-path="<%= request.path %>">
+
+    </div>
+  </ul>
+
+<script type="text/javascript" charset="utf-8">
+
+  $(function() {
+    fetch('/evaluations.json', {
+        headers : {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         }
+      })
+    .then(res => res.json())
+    .then(data => sortJSON(data))
+    .then(data => addEvalsToDom(data))
+
+    function sortJSON(data){
+      // Sort the JSON collection of objects by name
+      return data.sort(function(a, b) {
+                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                if (nameA < nameB) {
+                  return -1;
+                }
+                if (nameA > nameB) {
+                  return 1;
+                }
+                // names must be equal
+                return 0;
+            });
+    }
+
+
+    function addEvalsToDom(evalsArray) {
+    	evalsArray.forEach(function(eval) {
+        //javascript optional parameters
+        eval.course = eval.course || {}
+        const newEval = new Evaluation(eval.id, eval.name, eval.course.title, eval.course.start_date)
+        $('#evaluations-main').append(newEval.renderEval())
+    	})
+    }
+
+    function Evaluation(id, name, course, startDate){
+      this.id = id
+      this.name = name
+      this.course = course
+      this.startDate = startDate
+    }
+
+    Evaluation.prototype.renderEval = function() {
+      return `
+        <li class="col-12 d-block width-full py-4 border-bottom public source">
+          <div class="d-inline-block mb-1">
+            <h3>
+              <a href="/evaluations/${this.id}" itemprop="name codeRepository"> ${this.name}</a>
+            </h3>
+          </div>
+          <div class="f6 text-gray mt-2">
+            <span class="mr-3" itemprop="programmingLanguage">
+              Class: ${this.course || "Not assigned"}
+            </span>
+            Date: ${this.startDate || "Not assigned"}
+          </div>
+        </li>
+      `
+    }
+})
+
+</script>

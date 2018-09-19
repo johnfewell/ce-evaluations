@@ -1,0 +1,19 @@
+
+<h2>Evaluation for <%= @finished_evaluation.course.title %> by <%= @finished_evaluation.attendee.fullname %></h2>
+
+<h3>Questions</h3>
+<div class="mx-5">
+  <ol>
+      <% @questions_answers_hash.each do |q, a| %>
+      <li>
+        <strong><%= q %></strong> <%= a %>
+      </li>
+      <% end %>
+  </ol>
+</div>
+<br />
+
+
+
+<%= link_to 'Edit', edit_finished_evaluation_path(@finished_evaluation), class: "btn" %> |
+<%= link_to 'Destroy', @finished_evaluation, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>

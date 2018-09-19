@@ -1,0 +1,71 @@
+<% if is_authorized?(@course) && @course.finished_evaluations.any? %>
+
+  <%= link_to 'View Report', report_course_path(@course), class: "btn btn-primary" %>
+  <br /><br />
+<% end %>
+<h2><%= @course.title %></h2>
+<div class="mx-5">
+  <ul>
+    <li>Instructor: <%= link_to @course.instructor.fullname, @course.instructor %></a></li>
+    <li>Location: <%= @course.location %></li>
+    <li>Credits: <%= @course.credits %></li>
+    <li>Start Date: <%= @course.start_date %></li>
+    <li>End Date: <%= @course.end_date %></li>
+    <li>Learning Objective 1: <%= @course.learning_objective_1 %></li>
+    <li>Learning Objective 2: <%= @course.learning_objective_2 %></li>
+    <li>Learning Objective 3: <%= @course.learning_objective_3 %></li>
+  </ul>
+</div>
+</br>
+
+<% if is_authorized?(@course) %>
+
+  <h3>Attendees</h3>
+    <div class="mx-5">
+      <% if @course.attendees.any? %>
+        <ul>
+            <% @course.attendees.each do |a| %>
+            <li>
+              <%= link_to a.fullname, attendee_path(a) %>
+            </li>
+            <% end %>
+        </ul>
+        <% else %>
+        None
+      <% end %>
+    </div>
+  <br />
+
+  <h3>Evaluation Name:
+
+      <% if !@course.evaluation.nil?  %>
+        <%= @course.evaluation.name %></h3>
+      <% else %>
+        <%= link_to "Not assigned - Create one", new_evaluation_path%></h3>
+      <% end %>
+
+  <% if @course.complete? %>
+    <br />
+    <h3>Finished Evaluations:
+        <% if !@course.finished_evaluations.nil?  %>
+          <%= @course.finished_evaluations.count %></h3>
+        <% else %>
+          None completed</h3>
+        <% end %>
+
+  <% end %>
+  <br />
+  <h3>Import Attendees</h3>
+  <br>
+  <%= form_tag import_courses_path, id: params[:id], multipart: true do %>
+  <%= hidden_field_tag :id , params[:id] %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+  <% end %>
+
+  <br />
+  <br />
+
+  <%= link_to 'Edit', edit_course_path(@course), class: "btn" %> |
+  <%= link_to 'Destroy', @course, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

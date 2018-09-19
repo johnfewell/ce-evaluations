@@ -1,0 +1,11 @@
+<div id="evaluation-main" data-id="<%= params[:id] %>">
+</div>
+<script type="text/javascript" charset="utf-8">
+   $(function() {
+     const evalId = parseInt($("#evaluation-main").attr("data-id"))
+     $.get("/evaluations/" + evalId + ".json", function(evaluation){
+        addEvalToDom(evaluation)
+        addEventHandler()
+      })
+  })
+</script>

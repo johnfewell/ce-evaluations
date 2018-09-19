@@ -1,0 +1,31 @@
+<div class="tabnav">
+  <div class="float-right">
+    <% unless is_attendee? %>
+      <%= link_to "New Course", new_course_path, class: "tabnav-extra btn" %>
+      <%= link_to "Draft Courses", draft_courses_path, class: "tabnav-extra" %>
+    <% end %>
+  </div>
+  <nav class="tabnav-tabs" aria-label="All Courses">
+
+    <%= link_to courses_path, :class => current_page?(courses_path) do %>
+      All Courses
+      <span class="Counter"><%= courses_published_count %></span>
+    <% end %>
+
+    <%= link_to finished_courses_path, :class => current_page?(finished_courses_path) do %>
+      Finished Courses
+      <span class="Counter"><%= courses_finished_count %></span>
+    <% end %>
+
+    <%= link_to current_courses_path, :class => current_page?(current_courses_path) do %>
+    Current Courses
+      <span class="Counter"><%= courses_current_count %></span>
+    <% end %>
+
+    <%= link_to upcoming_courses_path, :class => current_page?(upcoming_courses_path) do %>
+    Upcoming Courses
+      <span class="Counter"><%= courses_upcoming_count %></span>
+    <% end %>
+
+  </nav>
+</div>

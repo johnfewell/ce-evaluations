@@ -1,5 +1,8 @@
 {
   "name": "ce-evaluations",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "octicons": "^8.1.0",
+    "primer": "^10.8.1"
+  }
 }

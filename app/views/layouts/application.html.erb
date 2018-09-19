@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CeEvaluations</title>
+    <title>Continuing Education Certificates App</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <% if current_user.nil? %>
+      <%= render "logged_out_header" %>
+    <% elsif current_user.instructor.nil? && current_user.attendee.nil? && !current_user.superadmin_role %>
+      <%= render "unassigned_user_nav" %>
+    <% elsif !current_user.nil? %>
+      <%= render "nav" %>
+    <% else %>
+      <%= render "logged_out_header" %>
+    <% end %>
+
+
+    <div class="container pt-3">
+      <div class="flash-messages">
+      <% if !alert.nil? %>
+          <div class="flash flash-warn">
+            <button class="flash-close js-flash-close" type="button"><%= octicon "x", :"aria-label" => "Close" %></button>
+            <p id="alert"><%= octicon "alert" %> <%= alert %></p>
+          </div>
+      <% end %>
+      <% if !notice.nil? %>
+          <div class="flash flash-success">
+            <button class="flash-close js-flash-close" type="button"><%= octicon "x", :"aria-label" => "Close" %></button>
+            <p id="notice"><%= octicon "check" %> <%= notice %></p>
+          </div>
+      <% end %>
+    </div>
+
+      <%= yield %>
+
+      <%= render "footer" %>
+    </div>
   </body>
 </html>
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    addFlashHandler()
+  })
+</script>
