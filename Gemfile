@@ -27,6 +27,7 @@ gem 'jquery-rails'
 
 gem 'render_anywhere', :require => false
 
+gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
