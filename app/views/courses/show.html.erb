@@ -3,20 +3,60 @@
   <%= link_to 'View Report', report_course_path(@course), class: "btn btn-primary" %>
   <br /><br />
 <% end %>
+
 <h2><%= @course.title %></h2>
-<div class="mx-5">
-  <ul>
-    <li>Instructor: <%= link_to @course&.instructor&.fullname, @course&.instructor %></a></li>
-    <li>Location: <%= @course.location %></li>
-    <li>Credits: <%= @course.credits %></li>
-    <li>Start Date: <%= @course.start_date %></li>
-    <li>End Date: <%= @course.end_date %></li>
-    <li>Learning Objective 1: <%= @course.learning_objective_1 %></li>
-    <li>Learning Objective 2: <%= @course.learning_objective_2 %></li>
-    <li>Learning Objective 3: <%= @course.learning_objective_3 %></li>
-  </ul>
+
+<div class="ui segment">
+  <div class="ui relaxed divided list">
+    <div class="item">
+      <div class="content">
+        <div class="header">Instructor:</div>
+        <%= link_to @course&.instructor&.fullname, @course&.instructor %>      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <div class="header">Location</div>
+        <%= @course.location %>
+      </div>
+    </div>
+    <div class="item">
+      <div class="content">
+        <div class="header">Credits</div>
+        <%= @course.credits %>
+      </div>
+    </div>
+    <div class="item">
+    <div class="content">
+      <div class="header">Start Date</div>
+      <%= @course.start_date %>
+    </div>
+  </div>
+  <div class="item">
+  <div class="content">
+    <div class="header">End Date</div>
+    <%= @course.end_date %>
+  </div>
+</div>  <div class="item">
+<div class="content">
+  <div class="header">Learning Objective 1</div>
+  <%= @course.learning_objective_1 %>
 </div>
-</br>
+</div>
+<div class="item">
+<div class="content">
+  <div class="header">Learning Objective 2</div>
+  <%= @course.learning_objective_2 %>
+</div>
+</div>
+<div class="item">
+<div class="content">
+  <div class="header">Learning Objective 3</div>
+  <%= @course.learning_objective_3 %>
+</div>
+</div>
+  </div>
+  
+</div>
 
 <% if is_authorized?(@course) %>
 
