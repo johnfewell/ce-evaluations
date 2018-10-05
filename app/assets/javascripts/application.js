@@ -16,3 +16,5 @@
 //= require_tree .
 //= require lodash
 //= require cocoon
+// Loads all Semantic javascripts
+//= require semantic-ui
