@@ -6,7 +6,7 @@
 <h2><%= @course.title %></h2>
 <div class="mx-5">
   <ul>
-    <li>Instructor: <%= link_to @course.instructor.fullname, @course.instructor %></a></li>
+    <li>Instructor: <%= link_to @course&.instructor&.fullname, @course&.instructor %></a></li>
     <li>Location: <%= @course.location %></li>
     <li>Credits: <%= @course.credits %></li>
     <li>Start Date: <%= @course.start_date %></li>

@@ -1,4 +1,4 @@
-<%= render 'courses_subnav' %>
+<%#= render 'courses_subnav' %>
 <ul>
   <% @courses.each do |c| %>
     <% if is_authorized?(c) %>
@@ -10,7 +10,7 @@
         </div>
         <div class="f6 text-gray mt-2">
               <span class="mr-3" itemprop="programmingLanguage">
-                Instructor: <%= c.instructor.title %> <%= c.instructor.fullname %>, <%= c.instructor.suffix %>
+                Instructor: <%= c&.instructor&.title %> <%= c&.instructor&.fullname %>, <%= c&.instructor&.suffix %>
               </span>
             Date: <%= c.start_date %>
         </div>

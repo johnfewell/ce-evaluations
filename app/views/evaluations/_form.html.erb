@@ -1,6 +1,6 @@
 <div id="evaluation-main">
 
-<%= form_for @evaluation, builder: PrimerFormBuilder do |f| %>
+<%= form_for @evaluation do |f| %>
   <% if @evaluation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this post from being saved:</h2>

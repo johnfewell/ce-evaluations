@@ -1,5 +1,6 @@
 class Course < ApplicationRecord
-  belongs_to :instructor
+  belongs_to :instructor, optional: true
+
   has_many :course_attendees
   has_many :attendees, :through => :course_attendees
   has_one :evaluation
