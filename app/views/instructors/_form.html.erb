@@ -1,4 +1,4 @@
-<%= form_for @instructor, builder: PrimerFormBuilder do |f| %>
+<%= form_for(@instructor, html: {class: "ui form"}) do |f| %>
   <% if @instructor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %><br>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %><br>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %><br>
-    <%= f.label :suffix %><br>
-    <%= f.text_field :suffix %><br>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :suffix %>
+    <%= f.text_field :suffix %>
   </div>
 </br>
   <div class="actions">
