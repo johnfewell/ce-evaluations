@@ -4,8 +4,10 @@
     <%= f.text_field :content %><br>
   </div>
   <div class="field">
-    <%= f.label "Check if this is a text question, leave it blank for a 1-5 rating scale" %>:
-    <%= f.check_box :text %><br>
+    <%= f.label "Check if this is a text question, leave it blank for a 1-5 rating scale" %>
+    <%= f.check_box :text %>
+    
   </div>
-  <%= link_to_remove_association "remove question", f %>
+  <%= link_to_remove_association "remove question", f, class: 'ui negative basic button' %>
 </div>
+<br>

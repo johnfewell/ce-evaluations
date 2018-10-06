@@ -1,6 +1,6 @@
 <div id="evaluation-main">
 
-<%= form_for @evaluation do |f| %>
+<%= form_for(@evaluation, html: {class: "ui form"}) do |f| %>
   <% if @evaluation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@evaluation.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -14,13 +14,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Evaluation Name" %>:
-    <%= f.text_field :name %><br>
+    <%= f.label "Evaluation Name" %>
+    <%= f.text_field :name %>
   </div>
 
   <div id="question-forms" class="field mx-5 mt-2">
     <div class='links'>
-      <%= link_to_add_association 'add question', f, :questions %>
+    <%= link_to_add_association 'add question', f, :questions, class: 'ui positive basic button'  %>
     </div>
   </div>
 <br />
@@ -42,21 +42,3 @@
 
 </div>
 
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-      $('form').submit(function(event) {
-      event.preventDefault();
-
-      const values = $(this).serialize();
-      const posting = $.post('/evaluations', values);
-
-      posting.done(function(evaluation) {
-        const evalUrl = evaluation.id
-        addEvalToDom(evaluation)
-        history.pushState(null, null, evalUrl)
-        addEventHandler()
-      });
-    });
-  });
-
-</script>
