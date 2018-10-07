@@ -9,6 +9,10 @@ class Evaluation < ApplicationRecord
 
   scope :unassigned, -> {where(:course_id => nil)}
   scope :assigned, -> {where.not(:course_id => nil)}
+  
+  amoeba do
+    enable
+  end
 
   def next
     self.class.where("id > ?", id).first
