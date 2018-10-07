@@ -34,6 +34,24 @@ function addEventHandler(){
   })
 }
 
+$(".js-copy").on("click", function(event) {
+  let prevId = parseInt($(".js-prev").attr("data-id"));
+  if (isNaN(prevId)){
+    $('.flash-messages').html(`
+      <div class="flash flash-warn">
+        <p id="alert">No Previous Record</p>
+      </div>
+      `)
+  } else {
+    $.get("/evaluations/" + prevId + ".json", function(evaluation){                   $('.flash-messages').empty()
+      addEvalToDom(evaluation)
+      addEventHandler()
+    });
+  }
+  event.preventDefault()
+})
+
+
  function addEvalToDom(eval) {
     eval.course = eval.course || {}
     eval.next = eval.next || {}
@@ -80,4 +98,5 @@ function addEventHandler(){
        </div>
        <a href="#" class="js-prev btn" data-id="${this.previous}">Previous Evaluation</a>
        <a href="#" class="js-next btn" data-id="${this.next}">Next Evaluation</a>
+       <a href="#" class="js-copy btn" data-id="${this.copy}">Duplicate Evaluation</a>
    `}

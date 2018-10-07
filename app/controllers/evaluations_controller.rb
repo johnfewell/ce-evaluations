@@ -76,9 +76,9 @@ class EvaluationsController < ApplicationController
 
   def create
     @evaluation = Evaluation.new(evaluation_params)
-    binding.pry
+    
     if @evaluation.save
-      redirect_to @evaluation, notice: 'Evaluation was successfully created.'
+      render json: @evaluation, status: 201
     else
       render action: 'new'
     end
