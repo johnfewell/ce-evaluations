@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_203936) do
   end
 
   create_table "evaluation_questions", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "evaluation_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
