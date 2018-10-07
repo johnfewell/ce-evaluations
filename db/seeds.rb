@@ -83,14 +83,15 @@ Evaluation.create!([
   {name: "Best Class", course_id: 24},
   {name: "Demo Eval", course_id: 27}
 ])
-# EvaluationQuestion.create!([
-#   {evaluation_id: 1, question_id: 2},
-#   {evaluation_id: 1, question_id: 1},
-#   {evaluation_id: 1, question_id: 3},
-#   {evaluation_id: 1, question_id: 4},
-#   {evaluation_id: 3, question_id: 1},
-#   {evaluation_id: 4, question_id: 1},
-#   {evaluation_id: 4, question_id: 2},
+EvaluationQuestion.create!([
+  {evaluation_id: 1, question_id: 2},
+  {evaluation_id: 1, question_id: 1},
+  {evaluation_id: 1, question_id: 3},
+  {evaluation_id: 1, question_id: 4},
+  {evaluation_id: 3, question_id: 1},
+  {evaluation_id: 4, question_id: 1},
+  {evaluation_id: 4, question_id: 2}
+])
 #   {evaluation_id: 3, question_id: 6},
 #   {evaluation_id: 5, question_id: 1},
 #   {evaluation_id: 5, question_id: 2},
