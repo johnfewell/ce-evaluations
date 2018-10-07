@@ -24,8 +24,10 @@ class Evaluation < ApplicationRecord
 
   def copy!
     new_copy = self.amoeba_dup
+    new_copy.name = "COPY - " + new_copy.name
+    new_copy.course = nil
     new_copy.save
-    new_copy.id
+    new_copy
   end
 
 end

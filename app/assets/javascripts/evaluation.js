@@ -44,7 +44,7 @@ $(".js-copy").on("click", function(event) {
       </div>
       `)
   } else {
-    $.post("/evaluations/" + copyId + "/copy", function(evaluation){                   $('.flash-messages').empty()
+    $.get("/evaluations/" + copyId + "/copy", function(evaluation){                   $('.flash-messages').empty()
       addEvalToDom(evaluation)
       addEventHandler()
     });
@@ -103,5 +103,4 @@ $(".js-copy").on("click", function(event) {
        <a href="#" class="js-prev btn" data-id="${this.previous}">Previous Evaluation</a>
        <a href="#" class="js-next btn" data-id="${this.next}">Next Evaluation</a>
        <a href="#" class="js-copy btn" data-id="${this.id}">Duplicate Evaluation</a>
-     
    `}

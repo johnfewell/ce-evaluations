@@ -41,8 +41,8 @@ class EvaluationsController < ApplicationController
   end
 
   def copy
-    @evaluation.copy!
-    render json: @evaluation, status: 201
+    new_eval = @evaluation.copy!
+    render json: new_eval, status: 201
   end
 
   def answers
