@@ -1,5 +1,5 @@
 class EvaluationsController < ApplicationController
-   before_action :set_evaluation, only: [:show, :edit, :update, :destroy, :answers]
+   before_action :set_evaluation, only: [:show, :edit, :update, :destroy, :answers, :copy]
    before_action :is_authorized?, only: [:index, :new, :show, :edit, :update, :destroy]
 
   def index
@@ -38,6 +38,11 @@ class EvaluationsController < ApplicationController
   def new_question_form
     @question = Question.new
     render :layout => false
+  end
+
+  def copy
+    @evaluation.copy!
+    render json: @evaluation, status: 201
   end
 
   def answers

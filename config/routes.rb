@@ -56,6 +56,7 @@ Rails.application.routes.draw do
      collection {get :assigned}
      collection {get :unassigned}
      get 'answers', on: :member
+     get 'copy', on: :member
      get 'new_question_form'
    end
 

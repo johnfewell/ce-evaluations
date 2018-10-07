@@ -18,9 +18,10 @@ class Evaluation < ApplicationRecord
     self.class.where("id < ?", id).last
   end
 
-  def copy
+  def copy!
     new_copy = self.amoeba_dup
     new_copy.save
+    new_copy.id
   end
 
 end

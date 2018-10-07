@@ -32,18 +32,19 @@ function addEventHandler(){
     }
     event.preventDefault()
   })
-}
+
 
 $(".js-copy").on("click", function(event) {
-  let prevId = parseInt($(".js-prev").attr("data-id"));
-  if (isNaN(prevId)){
+  let copyId = parseInt($(".js-copy").attr("data-id"));
+  console.log(copyId)
+  if (isNaN(copyId)){
     $('.flash-messages').html(`
       <div class="flash flash-warn">
-        <p id="alert">No Previous Record</p>
+        <p id="alert">It didn't copy!</p>
       </div>
       `)
   } else {
-    $.get("/evaluations/" + prevId + ".json", function(evaluation){                   $('.flash-messages').empty()
+    $.post("/evaluations/" + copyId + "/copy", function(evaluation){                   $('.flash-messages').empty()
       addEvalToDom(evaluation)
       addEventHandler()
     });
@@ -51,6 +52,7 @@ $(".js-copy").on("click", function(event) {
   event.preventDefault()
 })
 
+}
 
  function addEvalToDom(eval) {
     eval.course = eval.course || {}
@@ -60,7 +62,7 @@ $(".js-copy").on("click", function(event) {
      $('#evaluation-main').html(newEval.renderEval())
  }
 
- function Evaluation(id, name, course, startDate, questions, next, previous){
+ function Evaluation(id, name, course, startDate, questions, next, previous, copy){
    this.id = id
    this.name = name
    this.course = course
@@ -68,12 +70,14 @@ $(".js-copy").on("click", function(event) {
    this.questions = questions
    this.next = next
    this.previous = previous
+   this.copy = copy
  }
 
  Evaluation.prototype.renderEval = function() {
    let questionList = this.questions.reduce((questionString, question) => {
      return questionString + `<li>${question.content}</li>`
    }, "" )
+ 
    return `
        <div class="d-inline-block mb-1">
          <h2>
@@ -98,5 +102,6 @@ $(".js-copy").on("click", function(event) {
        </div>
        <a href="#" class="js-prev btn" data-id="${this.previous}">Previous Evaluation</a>
        <a href="#" class="js-next btn" data-id="${this.next}">Next Evaluation</a>
-       <a href="#" class="js-copy btn" data-id="${this.copy}">Duplicate Evaluation</a>
+       <a href="#" class="js-copy btn" data-id="${this.id}">Duplicate Evaluation</a>
+     
    `}
