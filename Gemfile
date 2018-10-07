@@ -10,6 +10,8 @@ gem 'lodash-rails'
 
 gem 'rating'
 
+gem 'amoeba'
+
 gem "cocoon"
 
 gem 'omniauth-facebook'
