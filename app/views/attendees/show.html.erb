@@ -57,6 +57,14 @@
   </table>
 <br />
 
+
+<form action="http://www.ultradox.com/download/15w5FZEgTv7UGK7DVo7pM1WcJwzRPU" target="_blank">
+    <input type="text" name="hours_by_category.hours" required placeholder="hours_by_category.hours">
+    <input type="text" name="timesheet.description" required placeholder="timesheet.description">
+    <input type="text" name="timesheet.comment" required placeholder="timesheet.comment">
+    <input type="submit" value="Create and Download">
+</form>
+
 <% if is_superadmin? %>
   <%= link_to 'Edit', edit_attendee_path(@attendee), class: "btn" %> |
   <%= link_to 'Destroy', @attendee, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
