@@ -37,11 +37,13 @@
         <% if c.end_date > Date.today() %>
             Course not yet finished
         <% elsif @attendee.finished_evaluations.find {|evaluation| evaluation.course.id == c.id} %>
-          <%= octicon "file-pdf" %>
-          <%= link_to "Download Certificate",
-              course_attendee_download_path(c.id,
+         
+          <%= link_to course_attendee_download_path(c.id,
               @attendee, format: "pdf"),
-              {class: 'btn btn btn-sm'} %>
+              {class: 'ui button'} do %>
+              <i class="icon file pdf outline"></i>
+              Download Certificate
+              <%end%>
           <% elsif @attendee.incomplete_evaluations {|incomplete_evaluation| incomplete_evaluation.course.id == c.id} && c.evaluation.nil? %>
             Eval not assigned.
           <% elsif @attendee.incomplete_evaluations {|incomplete_evaluation| incomplete_evaluation.course.id == c.id} %>
