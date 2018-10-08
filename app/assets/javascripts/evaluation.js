@@ -45,8 +45,7 @@ $(".js-copy").on("click", function(event) {
       `)
   } else {
     $.get("/evaluations/" + copyId + "/copy", function(evaluation){                   $('.flash-messages').empty()
-      addEvalToDom(evaluation)
-      addEventHandler()
+      window.location.href = "/evaluations/" + evaluation.id + "/edit" 
     });
   }
   event.preventDefault()
