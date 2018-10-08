@@ -19,6 +19,10 @@
   </div>
 
   <div id="question-forms" class="field mx-5 mt-2">
+    <%= f.fields_for :questions do |question| %>
+      <%= render "question_fields", f: question %>
+    <% end %>
+    
     <div class='links'>
     <%= link_to_add_association 'add question', f, :questions, class: 'ui positive basic button'  %>
     </div>
