@@ -83,13 +83,14 @@ class EvaluationsController < ApplicationController
     @evaluation = Evaluation.new(evaluation_params)
     
     if @evaluation.save
-      render json: @evaluation, status: 201
+      redirect_to @evaluation, notice: 'Evaluation was successfully updated.'
     else
       render action: 'new'
     end
   end
 
   def update
+    binding.pry
     if @evaluation.update(evaluation_params)
       redirect_to @evaluation, notice: 'Evaluation was successfully updated.'
     else

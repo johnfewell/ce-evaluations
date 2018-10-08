@@ -47,22 +47,3 @@
 </div>
 
 
-<script type="text/javascript" charset="utf-8">
-
-  $(function () {
-      $('form').submit(function(event) {
-      event.preventDefault();
-
-      const values = $(this).serialize();
-      const posting = $.post('/evaluations', values);
-
-      posting.done(function(evaluation) {
-        const evalUrl = evaluation.id
-        addEvalToDom(evaluation)
-        history.pushState(null, null, evalUrl)
-        addEventHandler()
-      });
-    });
-  });
-
-</script>
