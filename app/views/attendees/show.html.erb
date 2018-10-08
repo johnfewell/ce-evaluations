@@ -38,6 +38,8 @@
             Course not yet finished
         <% elsif @attendee.finished_evaluations.find {|evaluation| evaluation.course.id == c.id} %>
          
+          <!–– Below is the correct way to use link_to with a block so that you can insert HTML within the link tag ––>
+
           <%= link_to course_attendee_download_path(c.id,
               @attendee, format: "pdf"),
               {class: 'ui button'} do %>
