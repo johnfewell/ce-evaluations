@@ -49,7 +49,7 @@
           <% elsif @attendee.incomplete_evaluations {|incomplete_evaluation| incomplete_evaluation.course.id == c.id} %>
             <%= link_to "Complete Evaluation",
             answers_attendee_evaluation_path(@attendee, c.evaluation.id),
-            {class: 'btn btn-primary'} %>
+            {class: 'ui button positive'} %>
           <% else %>
               Course not yet finished
           <% end %>
