@@ -5,7 +5,32 @@
 <% end %>
 
 <h2><%= @course.title %></h2>
-
+<h4 class="ui horizontal divider header">
+  <i class="list icon"></i>
+  Details
+</h4>
+<div class="ui segment">
+<table class="ui definition table">
+  <tbody>
+    <tr>
+      <td class="two wide column">Instructor</td>
+      <td> <%= link_to @course&.instructor&.fullname, @course&.instructor %>   </td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td>  <%= @course.location %></td>
+    </tr>
+    <tr>
+      <td>Credits</td>
+      <td>  <%= @course.credits %></td>
+    </tr>
+    <tr>
+      <td>Odor</td>
+      <td>Not Much Usually</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <div class="ui segment">
   <div class="ui relaxed divided list">
     <div class="item">
@@ -60,7 +85,10 @@
 
 <% if is_authorized?(@course) %>
 
-  <h3>Attendees</h3>
+  <h4 class="ui horizontal divider header">
+  <i class="users icon"></i>
+  Attendees
+</h4>
     <div class="mx-5">
       <% if @course.attendees.any? %>
         <ul>
