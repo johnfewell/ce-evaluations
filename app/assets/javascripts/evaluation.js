@@ -63,22 +63,22 @@ function addEventHandler() {
   });
 
   // $(".js-delete").on("click", function(event) {
-  //   const deleteId = parseInt($(".js-delete").attr("data-id"));
-  //   if (isNaN(deleteId)) {
-  //     $(".flash-messages").html(`
-  //     <div class="flash flash-warn">
-  //       <p id="alert">It didn't get deleted</p>
-  //     </div>
-  //     `);
-  //   } else {
-  //     $.ajax({
-  //       url: "/evaluations/" + deleteId,
-  //       method: 'DELETE',
-  //     })
-  //       .done(function() {
-  //         $(".flash-messages").empty();
-  //       });
-  //   }
+    // const deleteId = parseInt($(".js-delete").attr("data-id"));
+    // if (isNaN(deleteId)) {
+    //   $(".flash-messages").html(`
+    //   <div class="flash flash-warn">
+    //     <p id="alert">It didn't get deleted</p>
+    //   </div>
+    //   `);
+    // } else {
+    //   $.ajax({
+    //     url: "/evaluations/" + deleteId,
+    //     method: 'DELETE',
+    //   })
+    //     .done(function() {
+    //       $(".flash-messages").empty();
+    //     });
+    // }
   //   event.preventDefault();
   // });
 
@@ -90,7 +90,22 @@ function addEventHandler() {
         return false;
       },
       onApprove: function() {
-        window.alert("Approved!");
+        const deleteId = parseInt($(".js-delete").attr("data-id"));
+        if (isNaN(deleteId)) {
+          $(".flash-messages").html(`
+          <div class="flash flash-warn">
+            <p id="alert">It didn't get deleted</p>
+          </div>
+          `);
+        } else {
+          $.ajax({
+            url: "/evaluations/" + deleteId,
+            method: 'DELETE',
+          })
+            .done(function() {
+              $(".flash-messages").empty();
+            });
+        }
       }
     })
     .modal("attach events", ".js-delete", "show");
@@ -140,23 +155,38 @@ Evaluation.prototype.renderEval = function() {
   return `
   <div class="ui small basic test modal">
     <div class="ui icon header">
-      <i class="archive icon"></i>
-      Archive Old Messages
+      <i class="trash icon"></i>
+      Delete Evaluation?
     </div>
-    <div class="content">
-      <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+    <div class="content centered">
+      <p>You will not be able to undo this</p>
     </div>
     <div class="actions">
-      <div class="ui red basic cancel inverted button">
+      <div class="ui basic cancel inverted button">
         <i class="remove icon"></i>
-        No
+        Cancel
       </div>
-      <div class="ui green ok inverted button">
+      <div class="ui red ok inverted button">
         <i class="checkmark icon"></i>
-        Yes
+        Delete
       </div>
     </div>
   </div>
+  <div class="mini ui buttons">
+  <button class="ui left labeled icon button js-prev" data-id="${
+    this.previous
+  }">
+  <i class="left arrow icon"></i>
+  Previous
+  </button>
+
+  <button class="ui right labeled icon button js-next" data-id="${
+    this.next
+  }">
+      <i class="right arrow icon"></i>
+      Next
+      </button>
+</div>
        <div class="d-inline-block mb-1">
          <h2>
             ${this.name}
@@ -178,21 +208,7 @@ Evaluation.prototype.renderEval = function() {
        <div class="mt-3">
 
        </div>
-       <div class="ui buttons">
-       <button class="ui left labeled icon button js-prev" data-id="${
-         this.previous
-       }">
-       <i class="left arrow icon"></i>
-       Previous
-       </button>
 
-       <button class="ui right labeled icon button js-next" data-id="${
-         this.next
-       }">
-           <i class="right arrow icon"></i>
-           Next
-           </button>
-    </div>
     <button class="ui positive basic button js-copy" data-id="${
       this.id
     }">Duplicate</button>
