@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     elsif current_user.instructor_role
       instructor_url(user.instructor)
     elsif current_user.superadmin_role
-      admin_path
+      badmin_path
     else
       unassigned_users_path
     end

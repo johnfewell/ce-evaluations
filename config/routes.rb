@@ -1,22 +1,21 @@
 Rails.application.routes.draw do
 
-  #  devise_for :admin_users, ActiveAdmin::Devise.config
-  #  ActiveAdmin.routes(self)
+   devise_for :admin_users, ActiveAdmin::Devise.config
+   ActiveAdmin.routes(self)
   
    root to: "application#index"
 
   # root 'welcome#index'
 
+  devise_for :users, controllers: { 
+    registrations: 'users/registrations', 
+    omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  devise_for :users, controllers: { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
-
-  get 'admin', to: 'admin#index'
-
+  get 'badmin', to: 'badmin#index'
 
   # resources :users, :only => [:index, :update] do
   #   get :me, on: :collection
   # end
-
 
    resources :users do
      patch 'update_role', on: :member

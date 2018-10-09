@@ -5,7 +5,7 @@ module HomePathHelper
     elsif current_user.instructor_role
       instructor_path(user.instructor)
     else current_user.superadmin_role
-      admin_path
+      badmin_path
     end
   end
 
@@ -15,7 +15,7 @@ module HomePathHelper
     elsif current_user.instructor_role
       profile_instructor_path(user.instructor)
     else current_user.superadmin_role
-      admin_path
+      badmin_path
     end
   end
 end
