@@ -63,31 +63,30 @@ function addEventHandler() {
   });
 
   // $(".js-delete").on("click", function(event) {
-    // const deleteId = parseInt($(".js-delete").attr("data-id"));
-    // if (isNaN(deleteId)) {
-    //   $(".flash-messages").html(`
-    //   <div class="flash flash-warn">
-    //     <p id="alert">It didn't get deleted</p>
-    //   </div>
-    //   `);
-    // } else {
-    //   $.ajax({
-    //     url: "/evaluations/" + deleteId,
-    //     method: 'DELETE',
-    //   })
-    //     .done(function() {
-    //       $(".flash-messages").empty();
-    //     });
-    // }
+  // const deleteId = parseInt($(".js-delete").attr("data-id"));
+  // if (isNaN(deleteId)) {
+  //   $(".flash-messages").html(`
+  //   <div class="flash flash-warn">
+  //     <p id="alert">It didn't get deleted</p>
+  //   </div>
+  //   `);
+  // } else {
+  //   $.ajax({
+  //     url: "/evaluations/" + deleteId,
+  //     method: 'DELETE',
+  //   })
+  //     .done(function() {
+  //       $(".flash-messages").empty();
+  //     });
+  // }
   //   event.preventDefault();
   // });
 
   $(".ui.modal")
     .modal({
-      closable: false,
+      inverted: true,
       onDeny: function() {
-        window.alert("Wait not yet!");
-        return false;
+        return true;
       },
       onApprove: function() {
         const deleteId = parseInt($(".js-delete").attr("data-id"));
@@ -100,11 +99,10 @@ function addEventHandler() {
         } else {
           $.ajax({
             url: "/evaluations/" + deleteId,
-            method: 'DELETE',
-          })
-            .done(function() {
-              $(".flash-messages").empty();
-            });
+            method: "DELETE"
+          }).done(function() {
+            $(".flash-messages").empty();
+          });
         }
       }
     })
@@ -162,11 +160,11 @@ Evaluation.prototype.renderEval = function() {
       <p>You will not be able to undo this</p>
     </div>
     <div class="actions">
-      <div class="ui basic cancel inverted button">
+      <div class="ui basic cancel button">
         <i class="remove icon"></i>
         Cancel
       </div>
-      <div class="ui red ok inverted button">
+      <div class="ui red ok  button">
         <i class="checkmark icon"></i>
         Delete
       </div>
@@ -180,13 +178,12 @@ Evaluation.prototype.renderEval = function() {
   Previous
   </button>
 
-  <button class="ui right labeled icon button js-next" data-id="${
-    this.next
-  }">
+  <button class="ui right labeled icon button js-next" data-id="${this.next}">
       <i class="right arrow icon"></i>
       Next
       </button>
 </div>
+<br>
        <div class="d-inline-block mb-1">
          <h2>
             ${this.name}
