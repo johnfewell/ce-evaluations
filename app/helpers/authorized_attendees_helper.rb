@@ -6,6 +6,6 @@ module AuthorizedAttendeesHelper
         authorized_attendees << a
       end
     end
-    authorized_attendees
+    authorized_attendees.sort! { |a,b| a.last_name.downcase <=> b.last_name.downcase }
   end
 end

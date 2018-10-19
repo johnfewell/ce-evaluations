@@ -2,23 +2,25 @@
     <%= link_to "New Attendee", new_attendee_path, class: "btn btn-primary" %>
   <% end %>
 
-  <div class="columns">
-
+  <div class="ui three column doubling stackable grid container">
     <% authorized_attendees.each_slice(10) do |attendees| %>
-        <div class="one-fifth column">
-          <table class="data-table">
-            <tr>
-              <th>Name</th>
-            </tr>
-              <% attendees.each do |a| %>
-                <tr>
-                  <td>
-                    <%= link_to a.fullname, attendee_path(a) %>
-                  </td>
-                </tr>
-            <% end %>
-        </table>
-      </div>
+        <div class="column">
+        <h3 class="ui top attached header">
+          Attendees  
+        </h3>
+        <div class="ui segment attached">
+          <div class="ui middle aligned animated divided list">
+            <% attendees.each do |a| %>
+            <div class="item">
+              <img class="ui avatar image" src="https://semantic-ui.com/images/avatar/small/daniel.jpg">
+              <div class="content">
+                 <div class="header"> <%= link_to a.fullname, attendee_path(a) %></div>
+              </div>
+            </div>  
+             <% end %>    
+          </div>
+        </div>
+        </div>
     <% end %>
   </div>
 <br />
