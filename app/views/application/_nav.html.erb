@@ -2,7 +2,7 @@
 
  <div class="container-lg UnderlineNav-container">
    <div class="UnderlineNav-body">
-     <%= image_tag "ce-cert-logo.png" %>
+     <div id="logo"><%= image_tag "guarantee.svg" %></div>
      <%= link_to "Home", home(current_user), :class => home_page?(home(current_user)) %>
      <% if is_superadmin? %>
       <%= link_to "Instructors", instructors_path, :class => current_class?(instructors_path)  %>
