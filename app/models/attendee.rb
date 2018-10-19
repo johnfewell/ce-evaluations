@@ -17,6 +17,11 @@ class Attendee < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def initial
+    return '?' if last_name.blank?
+    last_name.slice(1).chr.upcase
+  end
+
   def incomplete_evaluations
     completed_courses = []
     incomplete_evaluations_array = []
