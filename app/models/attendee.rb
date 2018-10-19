@@ -19,7 +19,7 @@ class Attendee < ApplicationRecord
 
   def initial
     return '?' if last_name.blank?
-    last_name.slice(1).chr.upcase
+    last_name.slice(0).chr.upcase
   end
 
   def incomplete_evaluations

@@ -6,7 +6,7 @@
     <% authorized_attendees.each_slice(10) do |attendees| %>
         <div class="column">
         <h3 class="ui top attached header">
-          Attendees  
+          <%= attendees.first.initial %> — <%= attendees.last.initial %> 
         </h3>
         <div class="ui segment attached">
           <div class="ui middle aligned animated divided list">
