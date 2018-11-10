@@ -8,7 +8,7 @@
 
 This app allows for the creation and management of continuing education evaluations and certificates.
 
-Attendees can log in and evaluate courses they have been registered for. After they complete an evaluation, they can download a certificate as proof of their CE credits. Instructors can log in and create and assign evaluations for their courses. They can also view reports which summarize feedback for their courses. Users can log in or sign up with email or Facebook.
+Attendees can log in and evaluate courses they have been registered for. After they complete an evaluation, they can download a certificate as proof of their CE credits. Instructors can log in, create, and assign evaluations for their courses. They can also view reports which summarize feedback for their courses. Users can log in or sign up with email or Facebook.
 
 ## Installation
 
@@ -31,7 +31,7 @@ Please either submit a pull request or contact me at fewell@gmail.com.
 
 ## Evaluations
 
-As an instructor or the admin, you can create questions, then assign them to an evaluation. Once you've done that, you can assign the evaluation to a course.
+As an instructor or admin, you can create questions, then assign them to an evaluation. Once you've done that, you can assign the evaluation to a course.
 
 ## Instructors
 
