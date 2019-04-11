@@ -2021,7 +2021,7 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/obuf/-/obuf-1.1.2.tgz#09bea3343d41859ebd446292d11c9d4db619084e"
 
-octicons@^8.1.0:
+octicons@8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/octicons/-/octicons-8.1.0.tgz#e609066618080868f9aa810c71e7692acf9063c6"
   dependencies:
@@ -2454,7 +2454,7 @@ primer-utilities@4.12.0:
   dependencies:
     primer-support "4.6.0"
 
-primer@^10.8.1:
+primer@10.8.1:
   version "10.8.1"
   resolved "https://registry.yarnpkg.com/primer/-/primer-10.8.1.tgz#8346b9f04ca618821795978e36d9b9945d56cd13"
   dependencies:
@@ -3264,7 +3264,7 @@ webpack-dev-middleware@3.2.0:
     url-join "^4.0.0"
     webpack-log "^2.0.0"
 
-webpack-dev-server@^3.1.8:
+webpack-dev-server@3.1.8:
   version "3.1.8"
   resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.1.8.tgz#eb7a95945d1108170f902604fb3b939533d9daeb"
   dependencies:
@@ -3311,7 +3311,7 @@ webpack-sources@^1.1.0, webpack-sources@^1.2.0:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack@^4.19.1:
+webpack@4.19.1:
   version "4.19.1"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.19.1.tgz#096674bc3b573f8756c762754366e5b333d6576f"
   dependencies:
