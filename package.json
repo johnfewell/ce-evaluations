@@ -6,7 +6,7 @@
     "primer": "10.10.5"
   },
   "devDependencies": {
-    "webpack": "4.19.1",
+    "webpack": "4.30.0",
     "webpack-dev-server": "3.1.8"
   }
 }
