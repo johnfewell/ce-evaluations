@@ -18,7 +18,7 @@ gem 'omniauth-facebook'
 
 gem 'devise'
 
-gem 'faker', '~> 1.8', '>= 1.8.4'
+gem 'faker', '~> 2.13', '>= 2.13.0'
 
 gem 'octicons_helper'
 
